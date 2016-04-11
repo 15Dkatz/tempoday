@@ -1,13 +1,8 @@
-// Ionic Starter App
+myApp = angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'firebase'])
+   .constant('FIREBASE_URL', 'https://tempoday.firebaseio.com/');
 
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-// 'starter.services' is found in services.js
-// 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
-.run(function($ionicPlatform) {
+myApp.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -23,48 +18,35 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
 
-  // Ionic uses AngularUI Router which uses the concept of states
-  // Learn more here: https://github.com/angular-ui/ui-router
-  // Set up the various states which the app can be in.
-  // Each state's controller can be found in controllers.js
+
+
+myApp.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
-  // setup an abstract state for the tabs directive
     .state('tab', {
     url: '/tab',
     abstract: true,
     templateUrl: 'templates/tabs.html'
+    // controller: 'ApplicationController'
   })
 
-  // Each tab has its own nav history stack:
-
-  .state('tab.dash', {
-    url: '/dash',
+  .state('tab.build', {
+    url: '/build',
     views: {
-      'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
+      'tab-build': {
+        templateUrl: 'templates/tab-build.html',
+        controller: 'BuildController'
       }
     }
   })
 
-  .state('tab.chats', {
-      url: '/chats',
+  .state('tab.workout', {
+      url: '/workout',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
-        }
-      }
-    })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
-      views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
+        'tab-workout': {
+          templateUrl: 'templates/tab-workout.html',
+          controller: 'WorkoutController'
         }
       }
     })
@@ -74,19 +56,39 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'tab-account': {
         templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
+        controller: 'AccountController'
       }
     }
-  });
+  })
 
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  .state('login', {
+    url: '/login',
+    templateUrl: 'templates/login.html',
+    controller: 'AccountController'
+  })
+
+  .state('register', {
+    url: '/register',
+    templateUrl: 'templates/register.html',
+    controller: 'RegistrationController'
+  })
+
+  $urlRouterProvider.otherwise('/login');
 
 });
 
+// show error message if incorrect combination of password and username
 
-// TODO
 
-// configure authentication.js pages
-// configure Rhyhth font-family to have responses and game functionality as compared to RhythmMaster Pro
-// need to configure style.css to incldue the Rhyth font-family for certain divs.
+// Todo:
+
+// change to black-and-orange, giants color-way theme for more intensity
+
+// <!-- fill background of progressBar in tab-workout.html with grey or a picture -->
+
+// add latency for offline capability to maintain exercises for user when they lose connection
+// <!-- CREATE CUSTOM LIST --> in build.html
+// 
+        // <!-- open sidenav bar -->
+
+        // <!-- CREATE CUSTOM Category -->
