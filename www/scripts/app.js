@@ -83,3 +83,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   $urlRouterProvider.otherwise('/tab/dash');
 
 });
+
+
+// TODO
+
+// configure authentication.js pages
+// configure Rhyhth font-family to have responses and game functionality as compared to RhythmMaster Pro
+// need to configure style.css to incldue the Rhyth font-family for certain divs.
